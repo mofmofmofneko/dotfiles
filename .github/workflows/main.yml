@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - outdated
+  pull_request:
+    branches:
+      - main
+      - outdated
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: install
+        run: curl -LSfs https://raw.githubusercontent.com/nekolaboratory/dotfiles/main/install.sh | bash
+      - name: setup
+        run: curl -LSfs https://raw.githubusercontent.com/nekolaboratory/dotfiles/main/.macos | bash

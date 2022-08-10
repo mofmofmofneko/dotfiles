@@ -1,0 +1,74 @@
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+build = 'pip3 install --user --upgrade neovim'
+hook_source = '''
+  let g:deoplete#enable_at_startup = 1
+
+  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+  inoremap <expr><CR> pumvisible() ? deoplete#close_popup() : "\<CR>"
+'''
+on_i = 1
+
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = 'go'
+hook_add = '''
+  let g:go_fmt_command = "goimports"
+'''
+
+[[plugins]]
+repo = 'zchee/deoplete-go'
+build = 'pip3 install --user --upgrade ujson && make && go get -u github.com/mdempsky/gocode'
+on-ft = 'go'
+hook_add = '''
+  let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
+  let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+'''
+depends_on = ['deoplete.nvim']
+
+[[plugins]]
+repo = 'kchmck/vim-coffee-script'
+on_ft = 'coffee'
+
+[[plugins]]
+repo  = 'slim-template/vim-slim'
+on_ft = 'slim'
+
+[[plugins]]
+repo  = 'tpope/vim-haml'
+on_ft = 'haml'
+
+[[plugins]]
+repo  = 'othree/html5.vim'
+on_ft = 'html'
+
+[[plugins]]
+repo  = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]]
+repo = 'rcmdnk/vim-markdown'
+on_ft = ['markdown','mkd']
+hook_add = '''
+  let g:vim_markdown_conceal = 0
+  let g:vim_markdown_frontmatter = 1
+  let g:vim_markdown_math = 1
+'''
+
+[[plugin]]
+repo = 'fishbullet/deoplete-ruby'
+on_ft = 'ruby'
+
+[[plugins]]
+repo = 'tpope/vim-endwise'
+on_ft = 'ruby'
+
+[[plugins]]
+repo = 'hashivim/vim-terraform'
+on_ft = 'terraform'
+
+[[plugins]]
+repo = 'juliosueiras/vim-terraform-completion'
+build = 'gem install neovim'
+on_ft = 'terraform'
+depends_on = ['deoplete.nvim', 'vim-terraform']

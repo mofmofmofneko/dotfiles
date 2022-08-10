@@ -1,0 +1,107 @@
+# ~/.zshrc
+#=====================
+
+# PATH
+#=====================
+export XDG_CONFIG_HOME="$HOME/.config"
+if [ -z $TMUX ]; then
+  export PATH="/usr/local/bin:/usr/bin:$PATH"
+  export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+fi
+
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# LANG
+#=====================
+# export LANG='ja_JP.UTF-8'
+# export LC_ALL='ja_JP.UTF-8'
+
+# alias
+#=====================
+alias ll='ls -l'
+alias la='ls -la'
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+alias cl='clear'
+alias tree='tree -N'
+alias up='cd ..'
+alias upup='cd ../..'
+alias upupup='cd ../../..'
+alias :q='exit'
+alias :Q='exit'
+alias k='kubectl'
+alias kubectx='kubectl ctx'
+alias kubens='kubectl ns'
+alias be='bundle exec'
+alias tf='terraform'
+alias tf_plan='terraform plan --refresh=false'
+alias globalip='curl http://globalip.me'
+alias vi='vim'
+if type nvim &>/dev/null; then
+  alias vim='nvim'
+fi
+
+# setopt
+#=====================
+setopt auto_pushd
+setopt auto_cd
+setopt pushd_ignore_dups
+setopt correct
+setopt nolistbeep
+setopt transient_rprompt
+setopt prompt_subst
+setopt auto_menu
+setopt list_packed
+setopt list_types
+setopt auto_param_slash
+setopt auto_param_keys
+
+# ls colors
+#=====================
+export LSCOLORS=exfxcxdxbxegedabagacad
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=34'
+if [ `uname` = 'Darwin' ]; then
+  alias ls="ls -GF"
+else
+  alias ls="ls --color"
+fi
+alias gls="gls --color"
+
+# Completion
+#=====================
+fpath=(~/.zsh/functions/Completion ${fpath})
+autoload -U compinit
+compinit
+zstyle ':completion:*:default' menu yes select
+zstyle ':completion:*' list-colors "${LS_COLORS}"
+
+# command history
+#=====================
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+setopt hist_ignore_dups
+setopt share_history
+setopt append_history
+setopt extended_history
+
+# prompt
+#=====================
+autoload -Uz colors ; colors
+
+PSCOLOR='01;32'
+[ -n "${SSH_CONNECTION}" ] && PSCOLOR='208'
+PROMPT=$'%{\e[38;05;${PSCOLOR}m%}${USERNAME}%# %{\e[m%}'
+#PROMPT=$'%{\e[38;05;${PSCOLOR}m%}%# %{\e[m%}'
+SPROMPT=$'%{\e[${PSCOLOR}m%}%r is correct? [n,y,a,e]:%{${reset_color}%} '
+
+# source ~/.zshrc.d/*.zsh
+#=====================
+if [ -d $HOME/.zshrc.d ]; then
+  for file in $HOME/.zshrc.d/*.zsh; do
+    source $file
+  done
+fi
+
+export PATH="$HOME/go/bin:$PATH"

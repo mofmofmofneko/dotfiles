@@ -1,0 +1,21 @@
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+[[plugins]]
+repo = 'yonchu/accelerated-smooth-scroll'
+
+[[plugins]]
+repo = 'w0ng/vim-hybrid'
+
+[[plugins]]
+repo = 'cocopon/vaffle.vim'
+
+[[plugins]]
+repo = 'ctrlpvim/ctrlp.vim'
+
+[[plugins]]
+repo = 'Raimondi/delimitMate'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'

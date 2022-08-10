@@ -1,0 +1,13 @@
+#run_list
+recipes:
+  - dotfiles
+  - tmux
+  - peco
+  - neovim
+  - anyenv
+
+# attributes
+dotfiles:
+  - zshrc
+  - vimrc
+  - pryrc

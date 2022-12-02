@@ -19,6 +19,7 @@ directory "#{ENV['HOME']}/.vim/bundles"
 execute "Install dein.vim" do
   command <<-EOF
     curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh -o #{ENV['HOME']}/.vim/bundles/dein-installer.sh
+    export VIMRC="#{ENV['HOME']}/.vimrc"
     sh #{ENV['HOME']}/.vim/bundles/dein-installer.sh #{ENV['HOME']}/.vim/bundles
   EOF
   not_if "test -e #{ENV['HOME']}/.vim/bundles/repos/github.com/Shougo/dein.vim"

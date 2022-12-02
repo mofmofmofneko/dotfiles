@@ -9,6 +9,12 @@ export JAVA_HOME=$(/usr/libexec/java_home -v 18);
 path_remove() {
         export PATH=`echo -n $PATH | awk -v RS=: -v ORS=: '$0 != "'$1'"' | sed 's/:$//'`;
 }
+device_backup_enable() {
+        sudo chmod 755 ~/Library/Application\ Support/MobileSync/Backup
+}
+device_backup_disable() {
+        sudo chmod 0000 ~/Library/Application\ Support/MobileSync/Backup
+}
 jdk() {
         path_remove "$JAVA_HOME/bin"
         unset JAVA_HOME

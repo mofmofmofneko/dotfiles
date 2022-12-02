@@ -1,5 +1,5 @@
 execute "git clone https://github.com/anyenv/anyenv #{ENV['HOME']}/.anyenv" do
-  not_if "test -d #{ENV['HOME']}/.anyenv"
+  not_if "test -e #{ENV['HOME']}/.anyenv"
 end
 
 link "#{ENV['HOME']}/.zshrc.d/anyenv.zsh" do

@@ -1,8 +1,8 @@
 function peco-history-selection() {
   if [ `uname` = 'Darwin' ]; then
-    BUFFER=`history -n 1 | tail -r | awk '!a[$0]++' | peco`
+    BUFFER=$(history -n 1 | tail -r | awk '!a[$0]++' | peco | sed -e 's/\\n/\n/g')
   else
-    BUFFER=`history -n 1 | tac | awk '!a[$0]++' | peco | sed -e 's/\\n/\n/'`
+    BUFFER=$(history -n 1 | tac | awk '!a[$0]++' | peco | sed -e 's/\\n/\n/g')
   fi
   CURSOR=$#BUFFER
   zle reset-prompt

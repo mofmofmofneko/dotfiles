@@ -11,6 +11,11 @@ my configuration files
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/nekolaboratory/dotfiles/main/install.sh)"
 ```
 
+## Full setup via HomeBrew
+```
+brew bundle --file '.dotfiles/Brewfile'
+```
+
 ## Change macOS settings
 
 ```

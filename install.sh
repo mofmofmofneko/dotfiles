@@ -23,7 +23,18 @@ if [ `uname` = 'Darwin' ]; then
   if [ "$?" -ne 0 ]; then
     echo "homebrew not found. Installing them..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    eval $(/opt/homebrew/bin/brew shellenv)
+    case "$(uname -m)" in
+        "x86_64")
+            eval $(/usr/local/bin/brew shellenv)
+            ;;
+        "arm64")
+            eval $(/opt/homebrew/bin/brew shellenv)
+            ;;
+        *)
+            echo "unsupported architecture: $(uname -m)"
+            exit 1
+            ;;
+    esac
   fi
   echo "homebrew OK"
 fi
@@ -55,4 +66,4 @@ git clone -b main https://github.com/nekolaboratory/dotfiles.git $DOTFILES_DIR
 cd $DOTFILES_DIR
 
 # Run mitamae
-$MITAMAE_BIN local -y nodes/`uname`.yml entry.rb
+$MITAMAE_BIN local -y nodes/`uname`.yml entry.rb --log-level=debug

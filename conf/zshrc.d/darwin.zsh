@@ -5,7 +5,7 @@ export PATH="$HOME/.nodebrew/current/bin:$PATH"
 export PATH="$(brew --prefix openssl@1.1)/bin:$PATH"
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 export PATH="$HOME/flutter/bin:$PATH"
-export JAVA_HOME=$(/usr/libexec/java_home -v 18);
+export JAVA_HOME=$(/usr/libexec/java_home -v 17);
 path_remove() {
         export PATH=`echo -n $PATH | awk -v RS=: -v ORS=: '$0 != "'$1'"' | sed 's/:$//'`;
 }

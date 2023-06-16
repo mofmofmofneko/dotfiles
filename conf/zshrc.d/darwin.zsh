@@ -35,7 +35,7 @@ if hash direnv 2>/dev/null; then
 fi
 
 # alias
-alias ghidra='jdk 11 && /usr/local/bin/ghidraRun'
+alias ghidra='jdk 17 && /opt/homebrew/bin/ghidraRun'
 alias brew='PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew'
 alias dnscache_clear='sudo killall -HUP mDNSResponder'
 alias ddprogress='while true; do sudo killall -INFO dd; sleep 2; done'

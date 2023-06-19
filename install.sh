@@ -2,7 +2,8 @@
 
 DOTFILES_DIR="$HOME/.dotfiles"
 MITAMAE_BIN="$HOME/bin/mitamae"
-MITAMAE_URL="https://github.com/k0kubun/mitamae/releases/download/v1.12.9/"
+MITAMAE_VERSION="v1.12.10"
+MITAMAE_URL="https://github.com/itamae-kitchen/mitamae/releases/download/$MITAMAE_VERSION/"
 
 if [ `uname` = 'Darwin' ]; then
   # Install Command Line tools
@@ -62,7 +63,9 @@ fi
 $MITAMAE_BIN version
 
 # Clone nekolaboratory/.dotfiles
-git clone -b main https://github.com/nekolaboratory/dotfiles.git $DOTFILES_DIR
+if [ ! -e $DOTFILES_DIR ]; then
+  git clone https://github.com/nekolaboratory/dotfiles.git $DOTFILES_DIR
+fi
 cd $DOTFILES_DIR
 
 # Run mitamae

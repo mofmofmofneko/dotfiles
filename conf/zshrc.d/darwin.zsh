@@ -24,9 +24,9 @@ jdk() {
         java -version
 }
 export ANDROID_HOME="$HOME/Library/Android/sdk"
-export ANDROID_NDK_VERSION="21.3.6528147"
+export ANDROID_NDK_VERSION=$(ls -t $ANDROID_HOME/ndk | head -n 1)
 export ANDROID_NDK_HOME="$ANDROID_HOME/ndk/$ANDROID_NDK_VERSION"
-export PATH="$JAVA_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/$(ls -tr $ANDROID_HOME/build-tools/ | tail -1):$ANDROID_NDK_HOME:$PATH"
+export PATH="$JAVA_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/$(ls -t $ANDROID_HOME/build-tools/ | head -n 1):$ANDROID_NDK_HOME:$PATH"
 
 typeset -gU path PATH
 

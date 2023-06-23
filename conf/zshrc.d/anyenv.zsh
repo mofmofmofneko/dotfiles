@@ -1,7 +1,6 @@
 if [ -e "$HOME/.anyenv" ]; then
-  if [ -z $TMUX ]; then
-    export PATH="$HOME/.anyenv/bin:$PATH"
-  fi
+  export ANYENV_ROOT="$HOME/.anyenv"
+  export PATH="$ANYENV_ROOT/bin:$PATH"
 
   if ! [ -f /tmp/anyenv.cache ]; then
     anyenv init - --no-rehash > /tmp/anyenv.cache

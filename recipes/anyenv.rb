@@ -15,15 +15,19 @@ execute "/bin/zsh -lc 'source #{ENV['HOME']}/.zshrc; anyenv install rbenv'" do
 end
 
 execute "git clone https://github.com/sstephenson/ruby-build.git #{ENV['HOME']}/.anyenv/envs/rbenv/ruby-build" do
-    not_if "test -d #{ENV['HOME']}/.anyenv/envs/rbenv/plugins/ruby-build"
+  not_if "test -d #{ENV['HOME']}/.anyenv/envs/rbenv/plugins/ruby-build"
+end
+
+execute "/bin/zsh -lc 'source #{ENV['HOME']}/.zshrc; rbenv install 3.2.2; rbenv global 3.2.2'" do
+  not_if "test -d #{ENV['HOME']}/.anyenv/envs/rbenv/versions/3.2.2"
 end
 
 execute "/bin/zsh -lc 'source #{ENV['HOME']}/.zshrc; anyenv install pyenv'" do
-    not_if "test -d #{ENV['HOME']}/.anyenv/envs/pyenv"
+  not_if "test -d #{ENV['HOME']}/.anyenv/envs/pyenv"
 end
 
 execute "/bin/zsh -lc 'source #{ENV['HOME']}/.zshrc; pyenv install 3.9.12; pyenv global 3.9.12'" do
-    not_if "test -d #{ENV['HOME']}/.anyenv/envs/pyenv/versions/3.9.12"
+  not_if "test -d #{ENV['HOME']}/.anyenv/envs/pyenv/versions/3.9.12"
 end
 
 execute "/bin/zsh -lc 'source #{ENV['HOME']}/.zshrc; pip install powerline-status'" do

@@ -38,6 +38,20 @@ if [ `uname` = 'Darwin' ]; then
     esac
   fi
   echo "homebrew OK"
+  
+  # Install rosetta
+  case "$(uname -m)" in
+      "arm64")
+          echo "Checking rosetta"
+          if ! /usr/bin/pgrep -q oahd; then
+            echo "rosetta not found. Installing them..."
+            softwareupdate --install-rosetta --agree-to-license
+          fi
+          echo "rosetta OK"
+          ;;
+      *)
+          ;;
+  esac
 fi
 
 # Install mitamae

@@ -44,8 +44,3 @@ alias libtoolize='glibtoolize'
 if type ggrep &>/dev/null; then
   alias grep='ggrep'
 fi
-
-# Application Shortcuts
-alias firefox='open -a Firefox'
-alias safari='open -a safari'
-alias chrome='open -a /Applications/Google\ Chrome.app'

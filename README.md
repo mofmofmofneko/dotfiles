@@ -13,7 +13,7 @@ my configuration files
 
 ## Full setup via HomeBrew
 ```
-brew bundle --file '.dotfiles/Brewfile'
+brew bundle --file $HOME/.dotfiles/Brewfile
 ```
 
 ## Change macOS settings

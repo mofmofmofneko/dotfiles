@@ -6,6 +6,8 @@ link "#{ENV['HOME']}/.zshrc.d/anyenv.zsh" do
   to "#{ENV['HOME']}/.dotfiles/conf/zshrc.d/anyenv.zsh"
 end
 
+run_command("/bin/zsh -lc 'source #{ENV['HOME']}/.zshrc", error: false)
+
 execute "/bin/zsh -lc 'source #{ENV['HOME']}/.zshrc; anyenv install --force-init'" do
   not_if "test -d #{ENV['HOME']}/.config/anyenv/anyenv-install"
 end
